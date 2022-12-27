@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crypto API</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body style="background: #B9E0FF">
+
+
+
+
+{% if not session.name %}
+
+    <div class="email">
+        <form class="search" action="/register" method="get">
+            <button style="border-radius: 20px; position: relative; margin-top: 20px;"
+                    class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                Registration
+            </button>
+        </form>
+    </div>
+    <br>
+
+    <div class="email">
+        <form class="search" action="/authorization" method="get">
+            <button style="border-radius: 20px;"
+                    class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                Sign In!
+            </button>
+        </form>
+    </div>
+{% endif %}
+{% if session.name %}
+
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex flex-shrink-0 items-center">
+                        <img class="block h-8 w-auto lg:hidden" src="https://1000logos.net/wp-content/uploads/2018/05/Bitcoin-Logo.png" alt="Your Company">
+                        <img class="hidden h-8 w-auto lg:block" src="https://1000logos.net/wp-content/uploads/2018/05/Bitcoin-Logo.png" alt="Your Company">
+                    </div>
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <a href="/" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
+
+                            <a href="/transfer" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Transfer</a>
+
+                            <a href="/shortPage" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Short Page</a>
+
+                            <a href="/userPage" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">User Page</a>
+
+                            <a href="/logout" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <button type="button" class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <span class="sr-only">View notifications</span>
+                        <!-- Heroicon name: outline/bell -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                        </svg>
+                    </button>
+
+                    <!-- Profile dropdown -->
+                    <div class="relative ml-3">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <h1 style="font-size: 20px; margin: 20px">Welcome to Home Page</h1>
+
+    <div style="color: #453C67; margin: 20px">
+        <p class="font-bold text-xl mb-2">Welcome: {{ session.name }}</p>
+        <p class="mb-2">Your email: {{ session.email }}</p>
+        <p>Your id: {{ session.id }}</p>
+
+    </div>
+
+{% endif %}
+
+
+{% if session.name %}
+
+    <h1 style="text-align: center; font-size: 30px; margin-bottom: 20px; color: #205295;"> Chose crypto and just press it!  </h1>
+
+
+{% for apps in app %}
+
+
+<div class="container px-6 py-10 mx-auto text-center" style="background: #B9E0FF;  border-style: solid;
+  border-width: 1px;">
+    <a href="/tradePage{{ apps.getSymbol }}"  methods="get"
+        <h2 class="text-xl font-bold mb-4">Coin</h2>
+        <table class="table-auto w-full">
+            <thead>
+            <tr>
+                <th class="px-4 py-2">Coin Name</th>
+                <th class="px-4 py-2">Coin Symbol</th>
+                <th class="px-4 py-2">Coin Price</th>
+                <th class="px-4 py-2">Change percent 24h</th>
+            </tr>
+            </thead>
+
+            <tr>
+                <td class="border px-4 py-2">{{ apps.getName }}</td>
+                <td class="border px-4 py-2">{{ apps.getSymbol }}</td>
+                <td class="border px-4 py-2">{{ apps.getPrice | number_format(2) }}$</td>
+                <td class="border px-4 py-2">{{ apps.getPercentChange24h | number_format(2) }}%</td>
+
+
+            </tr>
+            </a>
+        </table>
+    </div>
+</div>
+            {% endfor %}
+            {% endif %}
+
+{% if not session.name %}
+
+    {% for apps in app %}
+        <div class="container px-6 py-10 mx-auto text-center" style="background: #B9E0FF;  border-style: solid;
+  border-width: 1px;">
+            <h2 class="text-xl font-bold mb-4">Coin</h2>
+            <table class="table-auto w-full">
+                <thead>
+                <tr>
+                    <th class="px-4 py-2">Coin Name</th>
+                    <th class="px-4 py-2">Coin Symbol</th>
+                    <th class="px-4 py-2">Coin Price</th>
+                    <th class="px-4 py-2">Change percent 24h</th>
+                </tr>
+                </thead>
+
+                <tr>
+                    <td class="border px-4 py-2">{{ apps.getName }}</td>
+                    <td class="border px-4 py-2">{{ apps.getSymbol }}</td>
+                    <td class="border px-4 py-2">{{ apps.getPrice | number_format(2) }}$</td>
+                    <td class="border px-4 py-2">{{ apps.getPercentChange24h | number_format(2) }}%</td>
+
+
+                </tr>
+
+            </table>
+        </div>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+
+
+    </div>
+
+
+
