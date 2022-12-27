@@ -22,7 +22,7 @@
 
 * Install all necessary packages from https://packagist.org/
 
-* Import DB from script.sql
+* Import DB from `script.sql`
 
 * To run a project In terminal you need written: `php -S localhost:8000`
 
