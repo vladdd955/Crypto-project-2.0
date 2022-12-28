@@ -1,0 +1,49 @@
+{% extends 'layout.twig' %}
+{% block content %}
+
+
+
+    <h1 style="font-size: 20px">Welcome to User Page</h1>
+
+    <div  style="color: #453C67; margin: 20px" >
+        Welcome: {{ session.name }}
+        <br>
+        Your email: {{ session.email }}
+        <br>
+        Your id: {{ session.id }}
+        <br>
+        Your balance: {{ walletInfo }} USD $
+    </div>
+    <br>
+
+<div style="background: #B9E0FF;  border-style: solid;
+  border-width: 1px; " class="bg-white px-8 py-6 rounded-lg shadow-lg text-center ">
+    <h2 class="text-xl font-bold mb-4">Trade History</h2>
+    <table class="table-auto w-full">
+        <thead>
+        <tr>
+            <th class="px-4 py-2">Coin Symbol</th>
+            <th class="px-4 py-2">Coin Amount</th>
+            <th class="px-4 py-2">Coin Price</th>
+            <th class="px-4 py-2">Trade Date</th>
+            <th class="px-4 py-2">Income / Outcome</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for wallets in wallet %}
+        <tr>
+
+            <td class="border px-4 py-2">{{ wallets.getCoinSymbol }}</td>
+            <td class="border px-4 py-2">{{ wallets.getCoinAmount }}</td>
+            <td class="border px-4 py-2">{{ wallets.getPrice }}</td>
+            <td class="border px-4 py-2">{{ wallets.getDate }}</td>
+            <td class="border px-4 py-2">{{ wallets.getMoney}}</td>
+        </tr>
+
+            {% endfor %}
+
+
+
+{% endblock %}
+
+

@@ -1,0 +1,102 @@
+{% extends 'layout.twig' %}
+{% block content %}
+
+    <h1 style="font-size: 20px">Welcome to Trade Page</h1>
+
+    {% if session.name %}
+
+        <div style="color: #453C67">
+            Welcome: {{ session.name }}
+            <br>
+            Your email: {{ session.email }}
+            <br>
+            Your id: {{ session.id }}
+        </div>
+
+        <ul class="coin-list">
+            {% for coins in coin %}
+                <li>
+                    <span class="font-semibold text-xl text-gray-800">{{ coins.getSymbol }}</span> -
+                    <span class="text-gray-600">{{ coins.getCount }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+
+
+
+    {% endif %}
+
+
+
+    <div class="container px-6 py-10 mx-auto">
+    <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">Welcome to Crypto App</h1>
+
+
+    <div class="bg-white px-8 py-6 rounded-lg shadow-lg text-center" style="background: #B9E0FF;  border-style: solid;
+  border-width: 1px; ">
+        <h2 class="text-xl font-bold mb-4">Coin</h2>
+        <table class="table-auto w-full">
+            <thead>
+            <tr>
+                <th class="px-4 py-2">Coin Name</th>
+                <th class="px-4 py-2">Coin Symbol</th>
+                <th class="px-4 py-2">Coin Price</th>
+                <th class="px-4 py-2">Change percent 24h</th>
+            </tr>
+            </thead>
+
+            {% for apps in app %}
+                <tr>
+
+                    <td class="border px-4 py-2">{{ apps.getName }}</td>
+                    <td class="border px-4 py-2">{{ apps.getSymbol }}</td>
+                    <td class="border px-4 py-2">{{ apps.getPrice | number_format(2) }}$</td>
+                    <td class="border px-4 py-2">{{ apps.getPercentChange24h | number_format(2) }}%</td>
+                </tr>
+
+            {% endfor %}
+
+
+            {% if session.name %}
+
+
+
+                {% for apps in app %}
+
+                <div class="flex justify-center">
+                    <form action="/tradePage{{ apps.getSymbol }}" method="post" class="mr-4">
+                        <label>
+                            <input style="padding: 3px; border-radius: 20px" type="number" name="buyAmount" placeholder="Enter amount">
+                        </label>
+                        <div class="email">
+                            <form class="search" action="/authorization" method="get">
+                                <button type="submit" style="border-radius: 20px;"
+                                        class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                    Buy
+                                </button>
+                            </form>
+                        </div>
+                    </form>
+
+                    <form action="/sellPage{{ apps.getSymbol }}" method="post">
+                        <label>
+                            <input style="padding: 3px;  border-radius: 20px " type="number" name="sellAmount" placeholder="Enter amount">
+                        </label>
+                        <div class="email">
+                            <form class="search" action="/authorization" method="get">
+                                <button type="submit" style="border-radius: 20px;"
+                                        class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                    Sell
+                                </button>
+                            </form>
+                        </div>
+                    </form>
+                </div>
+
+                {% endfor %}
+
+
+            {% endif %}
+
+
+{% endblock %}
