@@ -26,7 +26,8 @@
 
 * To run a project In terminal you need written: `php -S localhost:8000`
 
-* In dotenv map `.env` file you need written your API-key, you can get it in  https://coinmarketcap.com/api/
+* In dotenv map `.env` file you need written your API-key, you can get it in  https://coinmarketcap.com/api/  
+you can see example in `.env.example`
 
 # Preview 
 ![Peek 2022-12-27 14-35](https://user-images.githubusercontent.com/74567141/209674125-fdd37333-d9f7-4698-8576-22be366a490a.gif)
